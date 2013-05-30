@@ -1,0 +1,4 @@
+0 0 * * * crontab .crontab # auto inject any crontab changes
+0 0 * * * brew update 2>&1 | tee -a crontab.log # Update brew repos nightly
+0 5 */7 * * echo <password> | sudo -S npm -g update 2>&1 | tee -a crontab.log # Update global npm repos weekly
+0 0 7 * * curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | bash 2>&1 | tee -a crontab.log # Relpace ievms with fresh copies monthly to bypass expiration 
