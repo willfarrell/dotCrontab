@@ -10,6 +10,15 @@ $ echo "0 0 * * * crontab .crontab" >> .crontab # auto inject crontab changes”
 $ crontab .crontab # save crontab changes
 ```
 
+## Samples
+```bash
+0 0 * * * crontab .crontab # auto inject any crontab changes
+0 0 * * * brew update 2>&1 | tee -a crontab.log # Update brew repos nightly
+0 5 */7 * * echo <password> | sudo -S npm -g update 2>&1 | tee -a crontab.log # Update global npm repos weekly
+0 0 7 * * curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | bash 2>&1 | tee -a crontab.log # Relpace ievms with fresh copies monthy
+```
+Please submit your commands to [issues](https://github.com/willfarrell/.crontab/issues).
+
 ## Reference
 ```
 * * * * * command to be executed
@@ -21,10 +30,3 @@ $ crontab .crontab # save crontab changes
 | ------------- Minute (0 - 59)
 ```
 
-## Samples
-```bash
-0 0 * * * crontab .crontab # auto inject any crontab changes
-0 0 * * * brew update 2>&1 | tee -a crontab.log # Update brew repos nightly
-0 5 */7 * * echo <password> | sudo -S npm -g update 2>&1 | tee -a crontab.log # Update global npm repos weekly
-0 0 7 * * curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | bash 2>&1 | tee -a crontab.log # Relpace ievms with fresh copies monthy
-```
