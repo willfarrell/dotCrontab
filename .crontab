@@ -1,4 +1,11 @@
-0 0 * * * crontab .crontab # auto inject any crontab changes
-0 0 * * * brew update 2>&1 | tee -a crontab.log # Update brew repos nightly
-0 5 */7 * * echo <password> | sudo -S npm -g update 2>&1 | tee -a crontab.log # Update global npm repos weekly
-0 0 7 * * curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | bash 2>&1 | tee -a crontab.log # Relpace ievms with fresh copies monthly to bypass expiration 
+0 * * * * sh .crontab/scripts/crontab-update.sh 1>> crontab.log 2>&1 # auto inject any crontab changes
+3 */9 * * * sh Dev/contribPlusPlus/contrib.sh -d /Users/USERNAME/Dev/contribPlusPlus -p PASSWORD 1>> crontab.log 2>&1
+1 0 * * * sh .crontab/scripts/mac-clean.sh 1>> crontab.log 2>&1
+1 0 * * * /usr/local/bin/brew update 1>> crontab.log 2>&1 # Update brew repos nightly
+1 0 */7 * * sh scripts/npm-update.sh --global --password <password> 1>> crontab.log 2>&1; # Update global npm repos weekly
+1 0 */7 * * sh scripts/npm-update.sh --dir ~/Sites 1>> crontab.log 2>&1; # Update project npm repos weekly
+1 0 */7 * * sh scripts/npm-update.sh --dir ~/Dev 1>> crontab.log 2>&1; # Update project npm repos weekly
+1 0 */7 * * sh scripts/bower-update.sh --dir ~/Sites 1>> crontab.log 2>&1; # Update project bower repos weekly
+1 0 */7 * * sh scripts/bower-update.sh --dir ~/Dev 1>> crontab.log 2>&1; # Update project bower repos weekly
+
+1 0 7 * * curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | bash 2>&1 | tee -a crontab.log # Relpace ievms with fresh copies monthly to bypass expiration
