@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "------------------------------"
+echo $(date -u)
 echo "$ sh scripts/mac-clean.sh"
 echo "------------------------------"
 

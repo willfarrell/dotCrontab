@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "------------------------------"
+echo $(date -u)
 echo "$ sh scripts/npm-update.sh"
 echo "------------------------------"
 

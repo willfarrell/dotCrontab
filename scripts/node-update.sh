@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "------------------------------"
+echo $(date -u)
 echo "$ sh scripts/node-update.sh"
 echo "------------------------------"
 
